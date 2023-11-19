@@ -1,10 +1,10 @@
-let connection; 
+let connection;
 
 // setup interface to handle user input from stdin
 const setupInput = (conn) => {
-  connection = conn;
+  connection = conn();
   const stdin = process.stdin;
-  const handleUserInput = function(key) {
+  const handleUserInput = (key) => {
     // check for ctrl+c
     if (key === "\u0003") {
       process.exit();
@@ -23,8 +23,10 @@ const setupInput = (conn) => {
     if (key === "d") {
       connection.write("Move: right");
     }
-    if(key === " ") {
-      connection.write("Say: Noob");
+
+    // message key
+    if (key === " ") {
+      connection.write("Say: Good job!");
     }
   };
 
